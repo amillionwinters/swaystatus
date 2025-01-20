@@ -29,9 +29,11 @@ fn main() {
         };
 
         let battery_icon = match read_file_trimmed(CHARGE_STATUS, &mut status_buf) {
-            Ok(trimmed_status) => match trimmed_status {
-                "Discharging" => "󰁾",
-                _ => "󰂅",
+            Ok(status) => match status {
+                "Discharging" => "󰁼",
+                "Charging" => "󰂅",
+                "Not charging" => "󰂀",
+                _ => "X",
             },
             Err(_) => "(Charging Status Unknown)",
         };
