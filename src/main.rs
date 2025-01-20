@@ -17,7 +17,7 @@ fn read_file_trimmed<'a>(path: &str, buffer: &'a mut [u8]) -> Result<&'a str, Er
 fn main() {
     const CAPACITY: &str = "/sys/class/power_supply/BAT0/capacity";
     const CHARGE_STATUS: &str = "/sys/class/power_supply/BAT0/status";
-    const SLEEP_DURATION: Duration = Duration::new(1, 0);
+    const ONE_SECOND: Duration = Duration::new(1, 0);
 
     let mut level_buf = [0u8; 16];
     let mut status_buf = [0u8; 16];
@@ -41,6 +41,6 @@ fn main() {
         let formatted_time = now.format("%H:%M:%S");
 
         println!("{battery_icon} {battery_level}% // {formatted_date} // {formatted_time}");
-        sleep(SLEEP_DURATION);
+        sleep(ONE_SECOND);
     }
 }
